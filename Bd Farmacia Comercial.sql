@@ -1,12 +1,10 @@
-
---ALUMNO:VARGAS PAMPA BLADIMEIR HARRY
---CREACION BD
 create database Farmaciaxd 
+
 --BORRAR BD
-drop database farmacia
---USO DE LA BD
+drop database Farmaciaxd
+
 USE Farmaciaxd
---CREACION DE TABLAS
+
 create table Usuario
 (
 cod_usu varchar(8)primary key not null,
@@ -37,12 +35,13 @@ create table OrdenPedido
 num_ordenPedido varchar(8) primary key not null,
 fecha datetime not null,
 cod_cli varchar (8) null,
-nom_cli varchar(40)null,
 cod_emp varchar(8) null, 
 cod_tipoPago varchar(8) null, 
 total int null 
 ) 
 go 
+
+
 
 
 create table Distrito 
@@ -221,11 +220,11 @@ insert into Clientes values ('34984835','CLEMENTE','san miguel','004','M',728847
                             ('45346525','LUIS','antiguo cuscatlan','001','M',84884765,1084884652,3266428,997547677)
 
 select * from OrdenPedido
-insert into OrdenPedido values ('88883425','2016-08-08','34984835','carlos','24360992','44333475',$75.00),
-                               ('88883426','2016-08-08','45346576','kevin','65646454','43334634',$80.00),
-                               ('88883427','2016-08-08','45346523','bryan','94364339','44335457',$60.00),
-                               ('88883428','2016-08-08','45346524','manuel','94360139','44895645',$25.75),
-                               ('88883429','2016-08-08','45346525','PILAR ','20140152','44304674',$345.00)
+insert into OrdenPedido values ('88883425','2016-08-08','34984835','24360992','44333475',$75.00),
+                               ('88883426','2016-08-08','45346576','65646454','43334634',$80.00),
+                               ('88883427','2016-08-08','45346523','94364339','44335457',$60.00),
+                               ('88883428','2016-08-08','45346524','94360139','44895645',$25.75),
+                               ('88883429','2016-08-08','45346525','20140152','44304674',$345.00)
 
 select * from Categoria 
 insert into Categoria  values ('34345','PARA LOS DOLORES MUSCULARES'),
