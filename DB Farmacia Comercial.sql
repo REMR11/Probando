@@ -32,16 +32,16 @@ CELULAR			INT NOT NULL
 
 CREATE TABLE UBICACION 
 (
-ID_DIR INT PRIMARY KEY NOT NULL,
-ID_DIS INT NOT NULL,
-LOCALIDAD VARCHAR( 20 ) NOT NULL,
-DIRECCION VARCHAR( 50 ) NOT NULL
+ID_DIR			INT PRIMARY KEY NOT NULL,
+ID_DIS			INT NOT NULL,
+LOCALIDAD		VARCHAR( 20 ) NOT NULL,
+DIRECCION		VARCHAR( 50 ) NOT NULL
 );
 
 CREATE TABLE OrdenPedido
 (
 NUM_OrdenPedido		INT PRIMARY KEY IDENTITY(1,1),
-FECHA				DATETIME NOT NULL,
+FECHA				DATE NOT NULL,
 ID_CLI				INT DEFAULT(8) NOT NULL,
 ID_EMP				INT DEFAULT(8) NOT NULL,
 ID_TipoPago			INT DEFAULT(8) NOT NULL,
@@ -60,7 +60,7 @@ ID_PRO		INT PRIMARY KEY NOT NULL,
 NOM_PRO		VARCHAR(40)NOT NULL,
 PRE_VENTAS	DECIMAL(10,2)NOT NULL,
 PRE_COMPRAS	DECIMAL(10, 2)NOT NULL,
-FECHA_VENC	DATETIME NOT NULL,
+FECHA_VENC	DATE NOT NULL,
 STOCK		INT NOT NULL, 
 ID_CATE		INT DEFAULT(8) NOT NULL,
 ID_PROV		INT DEFAULT(8) NOT NULL,
@@ -77,7 +77,7 @@ CARGO		VARCHAR(40) NOT NULL,
 EDAD		VARCHAR(2) NOT NULL,
 TEL			INT NOT NULL,
 CEL			INT NOT NULL,
-INGRESO		DATETIME NOT NULL,
+INGRESO		DATE NOT NULL,
 CLAVE		VARCHAR(20) NOT NULL
 );
 
@@ -96,7 +96,7 @@ IMPORTE			DECIMAL(10, 2)
 CREATE TABLE BOLETA
 (
 NUM_BOLETA		INT PRIMARY KEY IDENTITY(1,1),
-FECHA			DATETIME NOT NULL,
+FECHA			DATE NOT NULL,
 ID_EMPL			INT DEFAULT(8) NOT NULL,
 ID_CLI			INT DEFAULT(8) NOT NULL,
 NUM_OrdenPedido	INT DEFAULT(8) NOT NULL,
@@ -253,11 +253,11 @@ ORDER BY
 	ID_EMP
 
 INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, DIR_EMP, ID_DIS, CARGO, EDAD, TEL, CEL, INGRESO, CLAVE )
-		VALUES	(01, 'Ronald Eduardo Mejia Reinosa',	'Calle SalSiPuedes',	00005, 'Admin',			76,	45645625, 52315485, 15-02-1945, 'Empleado123'),
-				(02, 'Fidel Alejandro Contreras Perez', 'Calle Putacio',		00006, 'Servi',			75,	45645626, 52315486, 15-02-1946, 'Empleado234'),
-				(03, 'Jose Miguel Melgar Rivera',		'Calle Ojo Seco',		00004, 'Servi',			74,	45645627, 52315487, 15-02-1947, 'Empleado345'),
-				(04, 'Caled Ezequiel Avelar Sanchez',	'Calle de la Paja',		00007, 'SuperVisor',	73,	45645627, 52315488, 15-02-1948, 'Empleado456'),
-				(05, 'Jose Miguel Melgar Rivera',		'Calle de la Pasion ',	00008, 'Servi',			72,	45645627, 52315489, 15-02-1949, 'Empleado345')
+		VALUES	(1, 'Ronald Eduardo Mejia Reinosa',		'Calle SalSiPuedes',	00005, 'Admin',			76,	45645625, 52315485, '2019-02-23', 'Empleado123'),
+				(2, 'Fidel Alejandro Contreras Perez',	'Calle Putacio',		00006, 'Servi',			75,	45645626, 52315486, '2019-02-23', 'Empleado234'),
+				(3, 'Jose Miguel Melgar Rivera',		'Calle Ojo Seco',		00004, 'Servi',			74,	45645627, 52315487, '2019-02-23', 'Empleado345'),
+				(4, 'Caled Ezequiel Avelar Sanchez',	'Calle de la Paja',		00007, 'SuperVisor',	73,	45645627, 52315488, '2019-02-23', 'Empleado456'),
+				(5, 'Jose Miguel Melgar Rivera',		'Calle de la Pasion ',	00008, 'Servi',			72,	45645627, 52315489, '2019-02-23', 'Empleado345')
 
 --USUARIO
 SELECT 
@@ -271,7 +271,7 @@ FROM
 	USUARIO
 ORDER BY 
 	ID_USU
-
+	
 INSERT	INTO USUARIO(ID_USU, ID_EMP, NIVEL_USUARIO, NOM_USU, CONTRASEÑA, ACTIVO)
 		VALUES	(1, 1, 2, 'Ricardo Milos',		159357, 'si'),
 				(2,	2, 3, 'Lana RhoADES',		481592, 'si'),
@@ -286,7 +286,7 @@ select
 	ID_DIS,
 	LOCALIDAD,
 	DIRECCION
-from
+FROM
 	UBICACION
 ORDER BY 
 	ID_DIR
@@ -359,13 +359,13 @@ INSERT	INTO OrdenPedido(FECHA, ID_CLI, ID_EMP, ID_TipoPago, TOTAL)
 select 
 	ID_CATE,
 	NOM_DES
-from 
+FROM 
 	Categoria 
 ORDER BY 
 	ID_CATE
 
-insert	into Categoria (ID_CATE, NOM_DES)  
-		values (34345,'PARA LOS DOLORES MUSCULARES'),
+INSERT	INTO Categoria (ID_CATE, NOM_DES)  
+		VALUES (34345,'PARA LOS DOLORES MUSCULARES'),
                (56445,'PARA LOS DOLORES MUELAS'),
                (87653,'PARA LOA GRIPE'),
                (24567,'PARA EL DOLOR DE CUERPO'),
@@ -380,13 +380,13 @@ select
 	TELEFONO,
 	CELULAR,
 	ID_DISTRITO
-from 
+FROM 
 	PROVEEDOR
 ORDER BY
 	ID_PROV
 
 INSERT	INTO PROVEEDOR (ID_PROV, NOM_PROV, DIR_PROV, TELEFONO, CELULAR, ID_DISTRITO)
-		values (128, 'DROGUERIA CORPORACION PHARMALIVET ',	'SAN SALVADOR, SAN SALVADOR',		'3244550',  '997287262',  1),
+		VALUES (128, 'DROGUERIA CORPORACION PHARMALIVET ',	'SAN SALVADOR, SAN SALVADOR',		'3244550',  '997287262',  1),
                (823, 'DROGUERIA PROMESAS',					'COLÓN, LA LIBERTAD',				'3246343',  '997284534',  2),
                (123, 'DROGUERIA BF INTERNACIONAL',			'SAN SALVADOR, SAN SALVADOR',		'3244334',  '997287234',  3),
                (824, 'DROGUERIA JERUSALEM',					'COLÓN, LA LIBERTAD',				'3246343',  '997287564',  4),
@@ -401,11 +401,11 @@ from
 ORDER BY 
 	ID_PRE
 
-insert into Presentacion values(26,'HARRY VARGAS'),
-                               (27,'RUFUEL SOTO'),
-                               (28,'ANGEL ANGUILA'),
-                               (29,'ROBERT LAS CASAS'),
-                               (30,'LUIS')
+insert into Presentacion ( ID_PRE, NOM_PRE) values	(26,'HARRY VARGAS'),
+													(27,'RUFUEL SOTO'),
+													(28,'ANGEL ANGUILA'),
+													(29,'ROBERT LAS CASAS'),
+													(30,'LUIS')
 
 --Producto
 select
@@ -442,8 +442,10 @@ from
 ORDER BY
 	NUM_ORDEP
 
-INSERT	INTO DetalleOrdenPedido 
-		VALUES (90398,	'19.3', '2.50', '0.12'),
+	SELECT * FROM DetalleOrdenPedido, OrdenPedido
+
+INSERT	INTO DetalleOrdenPedido ( ID_PRO, CANTIDAD, PRECIO_VENTA, IMPORTE )
+		VALUES (90398, 	'19.3', '2.50', '0.12'),
                (938,	'19.3', '2.50', '0.14'),
                (90358,	'19.3', '1.50', '0.18'),
                (3903,	'15.3', '1.50', '0.12'),
