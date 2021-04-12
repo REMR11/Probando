@@ -35,19 +35,12 @@ DUI				INT NOT NULL
 
 CREATE TABLE UBICACION 
 (
-<<<<<<< HEAD
-ID_DIR			INT PRIMARY KEY NOT NULL,
-ID_DIS			INT NOT NULL,
-LOCALIDAD		VARCHAR( 20 ) NOT NULL,
-DIRECCION		VARCHAR( 50 ) NOT NULL
-=======
 ID_DIR		INT PRIMARY KEY NOT NULL,
 ID_DIS		INT NOT NULL,
 LOCALIDAD	VARCHAR( 20 ) NOT NULL,
 DIRECCION	VARCHAR( 50 ) NOT NULl,
 TELEFONO	INT NOT NULL,
 CELULAR		INT NOT NULL
->>>>>>> 36e485ef0486c628c1a0e310723aa3fd6d9629f5
 );
 ALTER TABLE UBICACION ALTER COLUMN LOCALIDAD VARCHAR ( 50 )
 
@@ -82,16 +75,8 @@ CREATE TABLE DETALLE_PRODUCTO
 ID_DP		INT PRIMARY KEY NOT NULL,
 PRE_VENTAS	DECIMAL(10,2)NOT NULL,
 PRE_COMPRAS	DECIMAL(10, 2)NOT NULL,
-<<<<<<< HEAD
-FECHA_VENC	DATE NOT NULL,
-STOCK		INT NOT NULL, 
-ID_CATE		INT DEFAULT(8) NOT NULL,
-ID_PROV		INT DEFAULT(8) NOT NULL,
-ID_PRES		INT DEFAULT(8) NOT NULL
-=======
 FECHA_VENC	DATETIME NOT NULL,
 STOCK		INT NOT NULL
->>>>>>> 36e485ef0486c628c1a0e310723aa3fd6d9629f5
 );
 
 CREATE TABLE EMPLEADO
@@ -102,13 +87,7 @@ ID_DIR		INT NOT NULL,
 ID_DIS		INT NOT NULL,
 CARGO		VARCHAR(40) NOT NULL,
 EDAD		VARCHAR(2) NOT NULL,
-<<<<<<< HEAD
-TEL			INT NOT NULL,
-CEL			INT NOT NULL,
-INGRESO		DATE NOT NULL,
-=======
 INGRESO		DATETIME NOT NULL,
->>>>>>> 36e485ef0486c628c1a0e310723aa3fd6d9629f5
 CLAVE		VARCHAR(20) NOT NULL
 );
 
@@ -248,282 +227,4 @@ ALTER TABLE DISTRITO
 ADD CONSTRAINT UNI_DISTRITO UNIQUE( NOM_DIS )
 
 ALTER TABLE CLIENTES 
-<<<<<<< HEAD
 ADD CONSTRAINT CK_DUI CHECK( LEN( DUI ) = 8 )
-
----------------------------INSERCION DE DATOS
---DISTRITO
-SELECT 
-	ID_DIS, 
-	NOM_DIS 
-FROM 
-	DISTRITO
-ORDER BY 
-	ID_DIS
-
-INSERT INTO DISTRITO( ID_DIS, NOM_DIS )
-VALUES	(01,'Santa Ana'),
-		(02,'Sonsonate'),
-		(03,'Ahuchapan'),
-		(04,'Chalatenango'),
-		(05,'La Libertad'),
-		(06,'San Salvador'),
-		(07,'Cuscatlan'),
-		(08,'Cabañas'),
-		(09,'La Paz'),
-		(10,'San Vicente'),
-		(11,'Usulutan'),
-		(12,'San Miguel'),
-		(13,'Morazan'),
-		(14,'La Union')
-
---EMPLEADO
-SELECT
-	ID_EMP
-	NOM_EMP, 
-	DIR_EMP,	
-	ID_DIS,		
-	CARGO,	
-	TEL,	
-	CEL,	
-	INGRESO, 
-	CLAVE 
-FROM 
-	EMPLEADO
-ORDER BY 
-	ID_EMP
-
-INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, DIR_EMP, ID_DIS, CARGO, EDAD, TEL, CEL, INGRESO, CLAVE )
-		VALUES	(1, 'Ronald Eduardo Mejia Reinosa',		'Calle SalSiPuedes',	00005, 'Admin',			76,	45645625, 52315485, '2019-02-23', 'Empleado123'),
-				(2, 'Fidel Alejandro Contreras Perez',	'Calle Putacio',		00006, 'Servi',			75,	45645626, 52315486, '2019-02-23', 'Empleado234'),
-				(3, 'Jose Miguel Melgar Rivera',		'Calle Ojo Seco',		00004, 'Servi',			74,	45645627, 52315487, '2019-02-23', 'Empleado345'),
-				(4, 'Caled Ezequiel Avelar Sanchez',	'Calle de la Paja',		00007, 'SuperVisor',	73,	45645627, 52315488, '2019-02-23', 'Empleado456'),
-				(5, 'Jose Miguel Melgar Rivera',		'Calle de la Pasion ',	00008, 'Servi',			72,	45645627, 52315489, '2019-02-23', 'Empleado345')
-
---USUARIO
-SELECT 
-	ID_USU,
-	ID_EMP,
-	NIVEL_USUARIO,
-	NOM_USU,
-	CONTRASEÑA,
-	ACTIVO
-FROM 
-	USUARIO
-ORDER BY 
-	ID_USU
-	
-INSERT	INTO USUARIO(ID_USU, ID_EMP, NIVEL_USUARIO, NOM_USU, CONTRASEÑA, ACTIVO)
-		VALUES	(1, 1, 2, 'Ricardo Milos',		159357, 'si'),
-				(2,	2, 3, 'Lana RhoADES',		481592, 'si'),
-				(3,	3, 5, 'Jordi Colinas',		683572, 'si'),
-				(4,	4, 3, 'Jonny Coda',			258741, 'si'),
-				(5,	5, 2, 'Nayic Bukele',		963852, 'si'),
-				(6,	1, 1, 'Emma Hernández',		159357, 'si')
-
---UBICACION
-select 
-	ID_DIR,
-	ID_DIS,
-	LOCALIDAD,
-	DIRECCION
-FROM
-	UBICACION
-ORDER BY 
-	ID_DIR
-
-INSERT	INTO UBICACION ( ID_DIR, ID_DIS, LOCALIDAD, DIRECCION)
-		VALUES	(1, 6, 'LA PALMA',				'DOMICILIO CONOCIDO'),
-				(2, 6, 'EL BONDHO',				'AV. GUADALUPE S/N'),
-				(3, 6, 'BOXTHA CHICO',			'AVENIDA NIÑOS HEROES NO. 3'),
-				(4, 6, 'CAÑADA GRANDE',			'CARRETERA MEXICO-LAREDO KM.125'),
-				(5, 6, 'DEMACU',				'PLAZA CONSTITUCION NO. 1'),
-				(6, 6, 'DEXTHO DE VICTORIA',	'DOMICILIO CONOCIDO'),
-				(7, 6, 'FRANCISCO VILLA',		'CARRETERA MEXICO-LAREDO'),
-				(8, 6, 'SAN MIGUEL ACAMBAY',	'AVENIDA MIGUEL HIDALGO S/N')
-
---CLIENTES
-SELECT 
-	ID_CLI,
-	NOM_CLI,
-	ID_DIR,
-	SEXO,
-	DUI,
-	RUC,
-	TELEFONO,
-	CELULAR
-FROM 
-	CLIENTES
-ORDER BY 
-	ID_CLI
-
-INSERT	INTO CLIENTES( ID_CLI, NOM_CLI, ID_DIR, SEXO, DUI, RUC, TELEFONO, CELULAR)
-		VALUES	(01, 'ADRIANA CAROLINA HERNANDEZ MONTERROZA',	2, 'F', 32345678, 215, 75439876, 78766543),
-				(02, 'ADRIANA MARCELA REY SANCHEZ',				3, 'F', 33456789, 216, 72345678, 75432187),
-				(03, 'ALEJANDRO ABONDANO ACEVEDO',				5, 'M', 34567891, 217, 78765432, 75612378),
-				(04, 'ALEXANDER CARVAJAL VARGAS',				6, 'M', 32165498, 218, 77654321, 76789123),
-				(05, 'ANDREA CATALINA ACERO CARO',				1, 'F', 31595466, 219, 73215647, 73213549),
-				(06, 'ANDREA LILIANA CRUZ GARCIA',				2, 'F', 32145498, 215, 79876543, 73541265),
-				(07, 'ANDRES FELIPE VILLA MONROY',				3, 'M', 31596547, 216, 79865432, 76549821),
-				(08, 'ANGELA PATRICIA MAHECHA PIÑEROS',			4, 'F', 36549872, 217, 76548321, 76954132),
-				(10, 'ANGELICA MARIA ROCHA GARCIA',				6, 'F', 32154654, 218, 76549744, 76542185),
-				(11, 'ANGIE TATIANA FERNÁNDEZ MARTÍNEZ',		7, 'F', 31596457, 219, 78495162, 76548125),
-				(12, 'GABRIEL MAURICIO NIETO BUSTOS',			4, 'M', 31599456, 215, 76541555, 75499544)
-
-UPDATE CLIENTES
-SET	DUI		 = 32345678, 
-	TELEFONO = 75439876, 
-	CELULAR  = 78766543
-WHERE ID_CLI = 1
-
---OrdenPedido
-SELECT 
-	NUM_OrdenPedido, 
-	FECHA,	
-	ID_CLI, 
-	ID_EMP, 
-	ID_TipoPago, 
-	TOTAL 
-FROM 
-	OrdenPedido
-ORDER BY
-	NUM_OrdenPedido
---
-INSERT	INTO OrdenPedido(FECHA, ID_CLI, ID_EMP, ID_TipoPago, TOTAL)
-		VALUES 	('2016-08-08', 1, 2,'44333475',$75.00),
-                ('2016-08-08', 2, 3,'43334634',$80.00),
-                ('2016-08-08', 3, 4,'44335457',$60.00),
-                ('2016-08-08', 4, 5,'44895645',$25.75),
-                ('2016-08-08', 5, 1,'44304674',$345.00)
-
---Categoria 
-select 
-	ID_CATE,
-	NOM_DES
-FROM 
-	Categoria 
-ORDER BY 
-	ID_CATE
-
-INSERT	INTO Categoria (ID_CATE, NOM_DES)  
-		VALUES (34345,'PARA LOS DOLORES MUSCULARES'),
-               (56445,'PARA LOS DOLORES MUELAS'),
-               (87653,'PARA LOA GRIPE'),
-               (24567,'PARA EL DOLOR DE CUERPO'),
-               (99767,'PARA EL RESFRIO'),
-               (23423,'PARA LA FIEBRE')
-
---PROVEEDOR
-select
-	ID_PROV,
-	NOM_PROV,
-	DIR_PROV,
-	TELEFONO,
-	CELULAR,
-	ID_DISTRITO
-FROM 
-	PROVEEDOR
-ORDER BY
-	ID_PROV
-
-INSERT	INTO PROVEEDOR (ID_PROV, NOM_PROV, DIR_PROV, TELEFONO, CELULAR, ID_DISTRITO)
-		VALUES (128, 'DROGUERIA CORPORACION PHARMALIVET ',	'SAN SALVADOR, SAN SALVADOR',		'3244550',  '997287262',  1),
-               (823, 'DROGUERIA PROMESAS',					'COLÓN, LA LIBERTAD',				'3246343',  '997284534',  2),
-               (123, 'DROGUERIA BF INTERNACIONAL',			'SAN SALVADOR, SAN SALVADOR',		'3244334',  '997287234',  3),
-               (824, 'DROGUERIA JERUSALEM',					'COLÓN, LA LIBERTAD',				'3246343',  '997287564',  4),
-               (127, 'DROGUERIA NOVA SALUD',				'ANTIGUO CUSCATLAN, LA LIBERTAD',	'3246450',  '997654566',  5) 
-
---Presentacion
-select 
-	ID_PRE,
-	NOM_PRE
-from 
-	Presentacion
-ORDER BY 
-	ID_PRE
-
-insert into Presentacion ( ID_PRE, NOM_PRE) values	(26,'HARRY VARGAS'),
-													(27,'RUFUEL SOTO'),
-													(28,'ANGEL ANGUILA'),
-													(29,'ROBERT LAS CASAS'),
-													(30,'LUIS')
-
---Producto
-select
-	ID_PRO,
-	NOM_PRO,
-	PRE_COMPRAS,
-	PRE_VENTAS,
-	FECHA_VENC,
-	STOCK,
-	ID_CATE,
-	ID_PROV,
-	ID_PRES
-from 
-	Producto 
-ORDER BY 
-	ID_PRO
-
-INSERT	INTO Producto( ID_PRO, NOM_PRO, PRE_COMPRAS, PRE_VENTAS, FECHA_VENC, STOCK, ID_CATE, ID_PROV, ID_PRES)  
-		values	(90398,	'ASPIRINAS',  '0.80', '0.30', '', 20, '34345',  128,  26),
-                (938,	'PANADOL',    '1.50', '0.60', '', 20, '56445',  823,  27),
-                (90358, 'palagrip',   '1.00', '0.50', '', 20, '87653',  123,  28),
-                (3903,  'ibuprofeno', '2.00', '1.00', '', 20, '24567',  824,  29),
-                (3983,  'FORTE AS',   '4.00', '1.00', '', 20, '99767',  127,  30)
-
---DetalleOrdenPedido
-select 
-	NUM_ORDEP,
-	ID_PRO,
-	CANTIDAD,
-	PRECIO_VENTA,
-	IMPORTE
-from 
-	DetalleOrdenPedido
-ORDER BY
-	NUM_ORDEP
-
-	SELECT * FROM DetalleOrdenPedido, OrdenPedido
-
-INSERT	INTO DetalleOrdenPedido ( ID_PRO, CANTIDAD, PRECIO_VENTA, IMPORTE )
-		VALUES (90398, 	'19.3', '2.50', '0.12'),
-               (938,	'19.3', '2.50', '0.14'),
-               (90358,	'19.3', '1.50', '0.18'),
-               (3903,	'15.3', '1.50', '0.12'),
-               (3983,	'15.3', '2.50', '0.12')
-
---Boleta
-select 
-	NUM_BOLETA,
-	FECHA,
-	ID_EMPL,
-	ID_CLI,
-	NUM_OrdenPedido,
-	SUBTOTAL,
-	DESCUENTO,
-	TOTAL
-FROM
-	Boleta
-ORDER BY
-	NUM_BOLETA
-	
-insert into Boleta values (' ',  1,  8,  5, '342',  340,  10.430),
-                          (' ',	 1,  2,  3, '744',  340,  10.560),
-                          (' ',  1,  1,  2, '345',  300,  10.290),
-                          (' ',  1,  6,  4, '644',  340,  10.560),
-                          (' ',  1,  3,  1, '746',  240,  30.200)
-
-
---------------------------- CONSULTAS/PRUEBAS
-
--- CANTIDAD DE UNIDADES POR PROVEEDOR
-select ID_PRO, CANTIDAD from DetalleOrdenPedido
-
--- IDENTIFICACION DE PROVEEDORES CON PRECIOS MAYORES A 2,00
-select  ID_PRO from  DetalleOrdenPedido  WHERE PRECIO_VENTA like '2%'
-
---CANTIDAD DE REGISTROS 
-SELECT COUNT(*) FROM USUARIO
-=======
-ADD CONSTRAINT CK_DUI CHECK( LEN( DUI ) = 8 )
->>>>>>> 36e485ef0486c628c1a0e310723aa3fd6d9629f5
