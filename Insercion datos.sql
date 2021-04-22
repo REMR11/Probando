@@ -2,28 +2,28 @@ USE FARMACIA
 
 SELECT NAME FROM SYSOBJECTS WHERE TYPE = 'U'
 
---USUARIO
---DETALLE_USUARIO
---CLIENTES
---UBICACION
---OrdenPedido
---CATEGORIA
---PRODUCTO
---EMPLEADO
---DetalleOrdenPedido
---BOLETA
---PRESENTACION
---PROVEEDOR
---DETALLE_PRODUCTO
+SELECT * FROM USUARIO
+SELECT * FROM DETALLE_USUARIO
+SELECT * FROM CLIENTES
+SELECT * FROM UBICACION
+SELECT * FROM OrdenPedido
+SELECT * FROM CATEGORIA
+SELECT * FROM PRODUCTO
+SELECT * FROM EMPLEADO
+SELECT * FROM DetalleOrdenPedido
+SELECT * FROM BOLETA
+SELECT * FROM PRESENTACION
+SELECT * FROM PROVEEDOR
+SELECT * FROM DETALLE_PRODUCTO
+
 ---------------------------INSERCION DE DATOS
+
 --DISTRITO
 SELECT 
 	ID_DIS, 
 	NOM_DIS 
 FROM 
 	DISTRITO
-ORDER BY 
-	ID_DIS
 
 INSERT INTO DISTRITO( ID_DIS, NOM_DIS )
 VALUES	(01,'Santa Ana'),
@@ -51,8 +51,6 @@ select
 	CELULAR
 from
 	UBICACION
-ORDER BY 
-	ID_DIR   
 			   
 INSERT	INTO UBICACION ( ID_DIR, ID_DIS, LOCALIDAD, DIRECCION, TELEFONO, CELULAR)
 		VALUES	(1, 6, 'LA PALMA',								'DOMICILIO CONOCIDO',				3244550,  997287262),
@@ -90,8 +88,6 @@ SELECT
 	CLAVE 
 FROM 
 	EMPLEADO
-ORDER BY 
-	ID_EMP
 
 INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, ID_DIR, ID_DIS, CARGO, EDAD, INGRESO, CLAVE )
 		VALUES	(01, 'Ronald Eduardo Mejia Reinosa',	4,  5, 'Admin',			76, 01-12-2019, 'Empleado123'),
@@ -104,6 +100,7 @@ INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, ID_DIR, ID_DIS, CARGO, EDAD, INGRESO, CLA
 				(08, 'Josue Alejandro Mancia Rodriguez', 16, 9, 'Admin',		69, 08-12-2019, 'Empleado679'),
 				(09, 'Empleado Ramdom ',				12, 1, 'SuperVisor',	68, 09-12-2019, 'Empleado671')
 
+
 --USUARIO
 SELECT 
 	ID_USU,
@@ -112,9 +109,6 @@ SELECT
 	CONTRASEÑA
 FROM 
 	USUARIO
-ORDER BY 
-	ID_USU
-
 
 INSERT	INTO USUARIO(ID_USU, ID_EMP, ID_DU, NOM_USU, CONTRASEÑA )
 		VALUES	(1, 1, 1, 'Ricardo Milos',		159357),
@@ -134,8 +128,6 @@ SELECT
 	ACTIVO
 FROM 
 	DETALLE_USUARIO
-ORDER BY 
-	ID_DU
 
 INSERT INTO DETALLE_USUARIO (ID_DU, NIVEL_USUARIO, ACTIVO)
 		VALUES	(1, 8, 'si'),
@@ -151,7 +143,6 @@ INSERT INTO DETALLE_USUARIO (ID_DU, NIVEL_USUARIO, ACTIVO)
 				(11, 6, 'si'),
 				(12, 7, 'no')
 
-
 --CLIENTES
 SELECT 
 	ID_CLI,
@@ -159,23 +150,21 @@ SELECT
 	ID_DIR,
 	SEXO,
 	DUI
-SELECT * FROM 
+FROM 
 	CLIENTES
-ORDER BY 
-	ID_CLI
-	--------------------------------------------------------------Cambiar luego
-INSERT	INTO CLIENTES( ID_CLI, NOM_CLI, ID_DIR, SEXO, RUC, DUI )
-		VALUES	(01, 'ADRIANA CAROLINA HERNANDEZ MONTERROZA',	2, 'F', 215, 78766543),
-				(02, 'ADRIANA MARCELA REY SANCHEZ',				3, 'F', 216, 75432187),
-				(03, 'ALEJANDRO ABONDANO ACEVEDO',				5, 'M', 217, 75612378),
-				(04, 'ALEXANDER CARVAJAL VARGAS',				6, 'M', 218, 76789123),
-				(05, 'ANDREA CATALINA ACERO CARO',				1, 'F', 219, 73213549),
-				(06, 'ANDREA LILIANA CRUZ GARCIA',				2, 'F', 215, 73541265),
-				(07, 'ANDRES FELIPE VILLA MONROY',				3, 'M', 216, 76549821),
-				(08, 'ANGELA PATRICIA MAHECHA PIÑEROS',			4, 'F', 217, 76954132),
-				(10, 'ANGELICA MARIA ROCHA GARCIA',				6, 'F', 218, 76542185),
-				(11, 'ANGIE TATIANA FERNÁNDEZ MARTÍNEZ',		7, 'F', 219, 76548125),
-				(12, 'GABRIEL MAURICIO NIETO BUSTOS',			4, 'M', 215, 75499544)
+
+INSERT	INTO CLIENTES( ID_CLI, NOM_CLI, ID_DIR, SEXO, DUI )
+		VALUES	(01, 'ADRIANA CAROLINA HERNANDEZ MONTERROZA',	2, 'F', 78766543),
+				(02, 'ADRIANA MARCELA REY SANCHEZ',				3, 'F', 75432187),
+				(03, 'ALEJANDRO ABONDANO ACEVEDO',				5, 'M', 75612378),
+				(04, 'ALEXANDER CARVAJAL VARGAS',				6, 'M', 76789123),
+				(05, 'ANDREA CATALINA ACERO CARO',				1, 'F', 73213549),
+				(06, 'ANDREA LILIANA CRUZ GARCIA',				2, 'F', 73541265),
+				(07, 'ANDRES FELIPE VILLA MONROY',				3, 'M', 76549821),
+				(08, 'ANGELA PATRICIA MAHECHA PIÑEROS',			4, 'F', 76954132),
+				(10, 'ANGELICA MARIA ROCHA GARCIA',				6, 'F', 76542185),
+				(11, 'ANGIE TATIANA FERNÁNDEZ MARTÍNEZ',		7, 'F', 76548125),
+				(12, 'GABRIEL MAURICIO NIETO BUSTOS',			4, 'M', 75499544)
 
 --OrdenPedido
 SELECT 
@@ -185,10 +174,8 @@ SELECT
 	ID_EMP, 
 	ID_TipoPago, 
 	TOTAL 
-SELECT * FROM 
+FROM 
 	OrdenPedido
-ORDER BY
-	NUM_OrdenPedido
 --
 INSERT	INTO OrdenPedido(FECHA, ID_CLI, ID_EMP, ID_TipoPago, TOTAL)
 		VALUES 	('01-2-2019', 1, 2,'44333475',$75.00),
@@ -203,8 +190,6 @@ select
 	NOM_DES
 from 
 	Categoria 
-ORDER BY 
-	ID_CATE
 
 insert	into Categoria (ID_CATE, NOM_DES)  
 		values (34345,'PARA LOS DOLORES MUSCULARES'),
@@ -214,7 +199,6 @@ insert	into Categoria (ID_CATE, NOM_DES)
                (99767,'PARA EL RESFRIO'),
                (23423,'PARA LA FIEBRE')
 
-
 --PROVEEDOR
 select
 	ID_PROV,
@@ -223,19 +207,13 @@ select
 	ID_DISTRITO
 from 
 	PROVEEDOR
-ORDER BY
-	ID_PROV
-
-	select * from UBICACION
 
 INSERT	INTO PROVEEDOR (ID_PROV, NOM_PROV, ID_DIR, ID_DISTRITO)
 		values (128, 'DROGUERIA CORPORACION PHARMALIVET ',	14,	1),
                (823, 'DROGUERIA PROMESAS',					15, 2),
                (123, 'DROGUERIA BF INTERNACIONAL',			16, 3),
                (824, 'DROGUERIA JERUSALEM',					17, 4),
-               (127, 'DROGUERIA NOVA SALUD',				18, 5) 
-
-
+               (127, 'DROGUERIA NOVA SALUD',				18, 5)
 			   
 --Presentacion
 select 
@@ -243,16 +221,20 @@ select
 	NOM_PRE
 from 
 	Presentacion
-ORDER BY 
-	ID_PRE
 
 insert into Presentacion values(26,'HARRY VARGAS'),
                                (27,'RUFUEL SOTO'),
                                (28,'ANGEL ANGUILA'),
                                (29,'ROBERT LAS CASAS'),
                                (30,'LUIS')
+
 --DETALLE_USUARIO
-  
+SELECT 
+	ID_DU,
+	NIVEL_USUARIO,
+	ACTIVO
+FROM 
+	DETALLE_USUARIO
 
 INSERT	INTO DETALLE_USUARIO (ID_DU, NIVEL_USUARIO, ACTIVO)
 		VALUES	(1, '09', 'SI'),
@@ -272,24 +254,35 @@ INSERT	INTO DETALLE_USUARIO (ID_DU, NIVEL_USUARIO, ACTIVO)
 select
 	ID_PRO,
 	NOM_PRO,
-	PRE_COMPRAS,
-	PRE_VENTAS,
-	FECHA_VENC,
-	STOCK,
 	ID_CATE,
 	ID_PROV,
 	ID_PRES
 from 
 	Producto 
-ORDER BY 
-	ID_PRO
 
-INSERT	INTO Producto( ID_PRO, NOM_PRO, PRE_COMPRAS, PRE_VENTAS, FECHA_VENC, STOCK, ID_CATE, ID_PROV, ID_PRES)  
-		values	(90398,	'ASPIRINAS',  '0.80', '0.30', '', 20, '34345',  128,  26),
-                (90938,	'PANADOL',    '1.50', '0.60', '', 20, '56445',  823,  27),
-                (90358, 'palagrip',   '1.00', '0.50', '', 20, '87653',  123,  28),
-                (90390,  'ibuprofeno', '2.00', '1.00', '', 20, '24567',  824,  29),
-                (90398,  'FORTE AS',   '4.00', '1.00', '', 20, '99767',  127,  30)
+INSERT	INTO Producto( ID_PRO, NOM_PRO, ID_DP, ID_CATE, ID_PROV, ID_PRES)  
+		values	(90398,	'ASPIRINAS',	1, '34345',  128,  26),
+                (90938,	'PANADOL',		2, '56445',  823,  27),
+                (90358, 'palagrip',		3, '87653',  123,  28),
+                (90390,  'ibuprofeno',	4, '24567',  824,  29),
+                (90388,  'FORTE AS',	5,' 99767',  127,  30)
+				
+--DetalleProducto
+SELECT 
+	ID_DP,
+	PRE_VENTAS,
+	PRE_COMPRAS,
+	FECHA_VENC,
+	STOCK
+FROM 
+	DETALLE_PRODUCTO
+
+INSERT	INTO DETALLE_PRODUCTO( ID_DP, PRE_VENTAS, PRE_COMPRAS, FECHA_VENC, STOCK)
+		VALUES	(1, '0.80', '0.30', '', 20),
+				(2, '1.50', '0.60', '', 20),
+				(3, '1.00', '0.50', '', 20),
+				(4, '2.00', '1.00', '', 20),
+				(5, '4.00', '1.00', '', 20)
 
 --DetalleOrdenPedido
 select 
@@ -300,15 +293,13 @@ select
 	IMPORTE
 from 
 	DetalleOrdenPedido
-ORDER BY
-	NUM_ORDEP
 
-INSERT	INTO DetalleOrdenPedido 
+INSERT	INTO DetalleOrdenPedido (ID_PRO, CANTIDAD, PRECIO_VENTA, IMPORTE)
 		VALUES (90398,	'19.3', '2.50', '0.12'),
-               (938,	'19.3', '2.50', '0.14'),
+               (90938,	'19.3', '2.50', '0.14'),
                (90358,	'19.3', '1.50', '0.18'),
-               (3903,	'15.3', '1.50', '0.12'),
-               (3983,	'15.3', '2.50', '0.12')
+               (90390, '15.3', '1.50', '0.12'),
+               (90388,	'15.3', '2.50', '0.12')
 
 --Boleta
 select 
@@ -322,14 +313,13 @@ select
 	TOTAL
 FROM
 	Boleta
-ORDER BY
-	NUM_BOLETA
 	
-insert into Boleta values (' ',  1,  8,  5, '342',  340,  10.430),
-                          (' ',	 1,  2,  3, '744',  340,  10.560),
-                          (' ',  1,  1,  2, '345',  300,  10.290),
-                          (' ',  1,  6,  4, '644',  340,  10.560),
-                          (' ',  1,  3,  1, '746',  240,  30.200)
+insert	into Boleta(FECHA, ID_EMPL, ID_CLI, NUM_OrdenPedido, SUBTOTAL, DESCUENTO, TOTAL)
+		values	(' ',  1,  8,  6, '342',  340,  10.430),
+                (' ',  1,  2,  2, '744',  340,  10.560),
+                (' ',  1,  1,  3, '345',  300,  10.290),
+                (' ',  1,  6,  4, '644',  340,  10.560),
+                (' ',  1,  3,  5, '746',  240,  30.200)
 
 
 --------------------------- CONSULTAS/PRUEBAS
