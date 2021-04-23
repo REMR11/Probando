@@ -213,8 +213,6 @@ ADD CONSTRAINT PK_ID_PRO
 FOREIGN KEY( ID_PRO ) 
 REFERENCES Producto( ID_PRO )
 
-	select * from BOLETA, OrdenPedido
-select * from OrdenPedido
 ALTER TABLE BOLETA
 ADD CONSTRAINT PK_ID_BOLE 
 FOREIGN KEY( NUM_OrdenPedido ) 
