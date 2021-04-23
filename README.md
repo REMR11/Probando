@@ -3,9 +3,9 @@
 ## BD Farmacia comercial 🐬
 * [SQL](https://docs.microsoft.com/en-us/sql/?view=sql-server-ver15)-Tecnologia utilizada
 
-## AdventureWorks sample databases🔧
-* [northwind](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)-ejemplos tomados en cuenta
+## Northwind🔧
+* [AdventureWorks sample databases](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)-ejemplos tomados en cuenta
 
 ## Aclaraciones
 * Repositorio creado para realizacion de pruebas de estudio y aprendizaje
-* REMR 
+* REMR11 
