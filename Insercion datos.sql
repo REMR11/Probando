@@ -10,21 +10,20 @@ SELECT * FROM UBICACION
 SELECT * FROM OrdenPedido
 SELECT * FROM CATEGORIA
 SELECT * FROM PRODUCTO
+SELECT * FROM DETALLE_PRODUCTO
 SELECT * FROM EMPLEADO
+SELECT * FROM DetalleEmpledo
 SELECT * FROM DetalleOrdenPedido
 SELECT * FROM BOLETA
 SELECT * FROM PRESENTACION
 SELECT * FROM PROVEEDOR
-SELECT * FROM DETALLE_PRODUCTO
+select * from DISTRITO
+
 
 ---------------------------INSERCION DE DATOS
 
 --DISTRITO
-SELECT 
-	ID_DIS, 
-	NOM_DIS 
-FROM 
-	DISTRITO
+EXEC SP_DISTRITO
 
 INSERT INTO DISTRITO( ID_DIS, NOM_DIS )
 VALUES	(01,'Santa Ana'),
@@ -78,38 +77,35 @@ INSERT	INTO UBICACION ( ID_DIR, ID_DIS, LOCALIDAD, DIRECCION, TELEFONO, CELULAR)
 
 
 --EMPLEADO
-SELECT
-	ID_EMP
-	NOM_EMP, 
-	ID_DIR	
-	ID_DIS,		
-	CARGO,	
-	EDAD,
-	INGRESO, 
-	CLAVE 
-FROM 
-	EMPLEADO
+EXEC SP_EMPLEADO
 
-INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, ID_DIR, ID_DIS, CARGO, EDAD, INGRESO, CLAVE )
-		VALUES	(01, 'Ronald Eduardo Mejia Reinosa',	4,  5, 'Admin',			76, 01-12-2019, 'Empleado123'),
-				(02, 'Fidel Alejandro Contreras Perez', 6,	6, 'Servi',			75, 02-12-2019, 'Empleado234'),
-				(03, 'Jose Miguel Melgar Rivera',		8,	4, 'Servi',			74, 03-12-2019, 'Empleado345'),
-				(04, 'Caled Ezequiel Avelar Sanchez',	3,	7, 'SuperVisor',	73, 04-12-2019, 'Empleado456'),
-				(05, 'Jose Miguel Melgar Rivera',		9,	8, 'Servi',			72, 05-12-2019, 'Empleado346'),
-				(06, 'German the Monkey',				5,	3, 'Admin',			71, 06-12-2019, 'Empleado567'),
-				(07, 'Anderson Callejas',				7,	1, 'servi',			70, 07-12-2019, 'Empleado678'),
-				(08, 'Josue Alejandro Mancia Rodriguez', 16, 9, 'Admin',		69, 08-12-2019, 'Empleado679'),
-				(09, 'Empleado Ramdom ',				12, 1, 'SuperVisor',	68, 09-12-2019, 'Empleado671')
+INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, ID_DIR, ID_DIS, CLAVE,  ID_DE )
+		VALUES	(01, 'Ronald Eduardo Mejia Reinosa',	4,  5, 'Empleado123', 1),
+				(02, 'Fidel Alejandro Contreras Perez', 6,	6,  'Empleado234', 2),
+				(03, 'Jose Miguel Melgar Rivera',		8,	4,  'Empleado345', 3),
+				(04, 'Caled Ezequiel Avelar Sanchez',	3,	7,  'Empleado456', 4),
+				(05, 'Jose Miguel Melgar Rivera',		9,	8,  'Empleado346', 5),
+				(06, 'German the Monkey',				5,	3,  'Empleado567', 6),
+				(07, 'Anderson Callejas',				7,	1,  'Empleado678', 7),
+				(08, 'Josue Alejandro Mancia Rodriguez', 16, 9,  'Empleado679', 8),
+				(09, 'Empleado Ramdom ',				12, 1,  'Empleado671', 9)
 
+--DetalleEmpledo
+SELECT * FROM DetalleEmpledo
 
+INSERT	INTO DetalleEmpledo(ID_DE, CARGO, EDAD, INGRESO)
+		VALUES	(1, 'Admin',		76, 01-12-2019),
+				(2, 'Servi',		75, 02-12-2019),
+				(3, 'Servi',		74, 03-12-2019),
+				(4, 'SuperVisor',	73, 04-12-2019),
+				(5, 'Servi',		72, 05-12-2019),
+				(6, 'Admin',		71, 06-12-2019),
+				(7, 'servi',		70, 07-12-2019),
+				(8, 'Admin',		69, 08-12-2019),
+				(9, 'SuperVisor',	68, 09-12-2019)
 --USUARIO
-SELECT 
-	ID_USU,
-	ID_EMP,
-	NOM_USU,
-	CONTRASEÑA
-FROM 
-	USUARIO
+
+SELECT * FROM VW_USUARIOS
 
 INSERT	INTO USUARIO(ID_USU, ID_EMP, ID_DU, NOM_USU, CONTRASEÑA )
 		VALUES	(1, 1, 1, 'Ricardo Milos',		159357),
@@ -121,28 +117,28 @@ INSERT	INTO USUARIO(ID_USU, ID_EMP, ID_DU, NOM_USU, CONTRASEÑA )
 				(7, 7, 6, 'Usuario Ramdon 1',	123456),
 				(8, 8, 8, 'Usuario Ramdon 2',	234567),
 				(9, 9, 9, 'Usuario Ramdon 3',	345678)
+--DETALLE_USUARIO
 
---DETALLE USUARIO
-SELECT
+SELECT 
 	ID_DU,
 	NIVEL_USUARIO,
-	ACTIVO
+	ACTIVO 
 FROM 
 	DETALLE_USUARIO
 
-INSERT INTO DETALLE_USUARIO (ID_DU, NIVEL_USUARIO, ACTIVO)
-		VALUES	(1, 8, 'si'),
-				(2, 6, 'si'),
-				(3,	7, 'no'),
-				(4, 4, 'si'),
-				(5, 3, 'si'),
-				(6,	6, 'no'),
-				(7, 7, 'si'),
-				(8, 5, 'si'),
-				(9,	2, 'no'),
-				(10, 8, 'si'),
-				(11, 6, 'si'),
-				(12, 7, 'no')
+INSERT	INTO DETALLE_USUARIO (ID_DU, NIVEL_USUARIO, ACTIVO)
+		VALUES	(1, '09', 'SI'),
+				(2, '07', 'SI'),
+				(3, '09', 'NO'),
+				(4, '04', 'SI'),
+				(5, '05', 'SI'),
+				(6, '08', 'NO'),
+				(7, '09', 'SI'),
+				(8, '07', 'SI'),
+				(9, '09', 'NO'),
+				(10, '04', 'SI'),
+				(11, '05', 'SI'),
+				(12, '08', 'NO')
 
 --CLIENTES
 SELECT 
@@ -201,13 +197,8 @@ insert	into Categoria (ID_CATE, NOM_DES)
                (23423,'PARA LA FIEBRE')
 
 --PROVEEDOR
-select
-	ID_PROV,
-	NOM_PROV,
-	ID_DIR,	
-	ID_DISTRITO
-from 
-	PROVEEDOR
+
+select * from VW_PROVEEDOR
 
 INSERT	INTO PROVEEDOR (ID_PROV, NOM_PROV, ID_DIR, ID_DISTRITO)
 		values (128, 'DROGUERIA CORPORACION PHARMALIVET ',	14,	1),
@@ -229,37 +220,10 @@ insert into Presentacion values(26,'HARRY VARGAS'),
                                (29,'ROBERT LAS CASAS'),
                                (30,'LUIS')
 
---DETALLE_USUARIO
-SELECT 
-	ID_DU,
-	NIVEL_USUARIO,
-	ACTIVO
-FROM 
-	DETALLE_USUARIO
-
-INSERT	INTO DETALLE_USUARIO (ID_DU, NIVEL_USUARIO, ACTIVO)
-		VALUES	(1, '09', 'SI'),
-				(2, '07', 'SI'),
-				(3, '09', 'NO'),
-				(4, '04', 'SI'),
-				(5, '05', 'SI'),
-				(6, '08', 'NO'),
-				(7, '09', 'SI'),
-				(8, '07', 'SI'),
-				(9, '09', 'NO'),
-				(10, '04', 'SI'),
-				(11, '05', 'SI'),
-				(12, '08', 'NO')
 
 --Producto
-select
-	ID_PRO,
-	NOM_PRO,
-	ID_CATE,
-	ID_PROV,
-	ID_PRES
-from 
-	Producto 
+
+SELECT * FROM VW_PRODUCTO
 
 INSERT	INTO Producto( ID_PRO, NOM_PRO, ID_DP, ID_CATE, ID_PROV, ID_PRES)  
 		values	(90398,	'ASPIRINAS',	1, '34345',  128,  26),
