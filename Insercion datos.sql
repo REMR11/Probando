@@ -10,21 +10,20 @@ SELECT * FROM UBICACION
 SELECT * FROM OrdenPedido
 SELECT * FROM CATEGORIA
 SELECT * FROM PRODUCTO
+SELECT * FROM DETALLE_PRODUCTO
 SELECT * FROM EMPLEADO
+SELECT * FROM DetalleEmpledo
 SELECT * FROM DetalleOrdenPedido
 SELECT * FROM BOLETA
 SELECT * FROM PRESENTACION
 SELECT * FROM PROVEEDOR
-SELECT * FROM DETALLE_PRODUCTO
+select * from DISTRITO
+
 
 ---------------------------INSERCION DE DATOS
 
 --DISTRITO
-SELECT 
-	ID_DIS, 
-	NOM_DIS 
-FROM 
-	DISTRITO
+EXEC SP_DISTRITO
 
 INSERT INTO DISTRITO( ID_DIS, NOM_DIS )
 VALUES	(01,'Santa Ana'),
@@ -78,30 +77,32 @@ INSERT	INTO UBICACION ( ID_DIR, ID_DIS, LOCALIDAD, DIRECCION, TELEFONO, CELULAR)
 
 
 --EMPLEADO
-SELECT
-	ID_EMP
-	NOM_EMP, 
-	ID_DIR	
-	ID_DIS,		
-	CARGO,	
-	EDAD,
-	INGRESO, 
-	CLAVE 
-FROM 
-	EMPLEADO
+EXEC SP_EMPLEADO
 
-INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, ID_DIR, ID_DIS, CARGO, EDAD, INGRESO, CLAVE )
-		VALUES	(01, 'Ronald Eduardo Mejia Reinosa',	4,  5, 'Admin',			76, 01-12-2019, 'Empleado123'),
-				(02, 'Fidel Alejandro Contreras Perez', 6,	6, 'Servi',			75, 02-12-2019, 'Empleado234'),
-				(03, 'Jose Miguel Melgar Rivera',		8,	4, 'Servi',			74, 03-12-2019, 'Empleado345'),
-				(04, 'Caled Ezequiel Avelar Sanchez',	3,	7, 'SuperVisor',	73, 04-12-2019, 'Empleado456'),
-				(05, 'Jose Miguel Melgar Rivera',		9,	8, 'Servi',			72, 05-12-2019, 'Empleado346'),
-				(06, 'German the Monkey',				5,	3, 'Admin',			71, 06-12-2019, 'Empleado567'),
-				(07, 'Anderson Callejas',				7,	1, 'servi',			70, 07-12-2019, 'Empleado678'),
-				(08, 'Josue Alejandro Mancia Rodriguez', 16, 9, 'Admin',		69, 08-12-2019, 'Empleado679'),
-				(09, 'Empleado Ramdom ',				12, 1, 'SuperVisor',	68, 09-12-2019, 'Empleado671')
+INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, ID_DIR, ID_DIS, CLAVE,  ID_DE )
+		VALUES	(01, 'Ronald Eduardo Mejia Reinosa',	4,  5, 'Empleado123', 1),
+				(02, 'Fidel Alejandro Contreras Perez', 6,	6,  'Empleado234', 2),
+				(03, 'Jose Miguel Melgar Rivera',		8,	4,  'Empleado345', 3),
+				(04, 'Caled Ezequiel Avelar Sanchez',	3,	7,  'Empleado456', 4),
+				(05, 'Jose Miguel Melgar Rivera',		9,	8,  'Empleado346', 5),
+				(06, 'German the Monkey',				5,	3,  'Empleado567', 6),
+				(07, 'Anderson Callejas',				7,	1,  'Empleado678', 7),
+				(08, 'Josue Alejandro Mancia Rodriguez', 16, 9,  'Empleado679', 8),
+				(09, 'Empleado Ramdom ',				12, 1,  'Empleado671', 9)
 
+--DetalleEmpledo
+SELECT * FROM DetalleEmpledo
 
+INSERT	INTO DetalleEmpledo(ID_DE, CARGO, EDAD, INGRESO)
+		VALUES	(1, 'Admin',		76, 01-12-2019),
+				(2, 'Servi',		75, 02-12-2019),
+				(3, 'Servi',		74, 03-12-2019),
+				(4, 'SuperVisor',	73, 04-12-2019),
+				(5, 'Servi',		72, 05-12-2019),
+				(6, 'Admin',		71, 06-12-2019),
+				(7, 'servi',		70, 07-12-2019),
+				(8, 'Admin',		69, 08-12-2019),
+				(9, 'SuperVisor',	68, 09-12-2019)
 --USUARIO
 SELECT 
 	ID_USU,
