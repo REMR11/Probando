@@ -18,7 +18,7 @@ SELECT * FROM BOLETA
 SELECT * FROM PRESENTACION
 SELECT * FROM PROVEEDOR
 select * from DISTRITO
-
+GO
 
 ---------------------------INSERCION DE DATOS
 
@@ -40,6 +40,7 @@ VALUES	(01,'Santa Ana'),
 		(12,'San Miguel'),
 		(13,'Morazan'),
 		(14,'La Union')
+GO
 
 --UBICACION
 select 
@@ -74,7 +75,7 @@ INSERT	INTO UBICACION ( ID_DIR, ID_DIS, LOCALIDAD, DIRECCION, TELEFONO, CELULAR)
 				(19, 8, 'MATERIALES ACEROS TUCAN.S.A. DE C.V',	'BLVD. BENITO JUAREZ NO. 1466-A',	3246485,  997654585),
 				(20, 8, 'PUBLICACIONES NAVA.S.A. DE C.C.',		'CALLE MATAMOROS NO.280',			3246495,  997654595),
 				(21, 9, 'SUPER BODEGA DE CORDOBA.S.A DE C.V.',	 'AV. INDEPENDENCIA NO. 545',		3246015,  997654015)
-
+GO
 
 --EMPLEADO
 EXEC SP_EMPLEADO
@@ -89,6 +90,7 @@ INSERT	INTO EMPLEADO( ID_EMP, NOM_EMP, ID_DIR, ID_DIS, CLAVE,  ID_DE )
 				(07, 'Anderson Callejas',				7,	1,  'Empleado678', 7),
 				(08, 'Josue Alejandro Mancia Rodriguez', 16, 9,  'Empleado679', 8),
 				(09, 'Empleado Ramdom ',				12, 1,  'Empleado671', 9)
+GO
 
 --DetalleEmpledo
 SELECT * FROM DetalleEmpledo
@@ -103,6 +105,8 @@ INSERT	INTO DetalleEmpledo(ID_DE, CARGO, EDAD, INGRESO)
 				(7, 'servi',		70, 07-12-2019),
 				(8, 'Admin',		69, 08-12-2019),
 				(9, 'SuperVisor',	68, 09-12-2019)
+GO
+
 --USUARIO
 
 SELECT * FROM VW_USUARIOS
@@ -117,6 +121,8 @@ INSERT	INTO USUARIO(ID_USU, ID_EMP, ID_DU, NOM_USU, CONTRASEÑA )
 				(7, 7, 6, 'Usuario Ramdon 1',	123456),
 				(8, 8, 8, 'Usuario Ramdon 2',	234567),
 				(9, 9, 9, 'Usuario Ramdon 3',	345678)
+GO
+
 --DETALLE_USUARIO
 
 SELECT 
@@ -139,16 +145,11 @@ INSERT	INTO DETALLE_USUARIO (ID_DU, NIVEL_USUARIO, ACTIVO)
 				(10, '04', 'SI'),
 				(11, '05', 'SI'),
 				(12, '08', 'NO')
+GO
 
 --CLIENTES
-SELECT 
-	ID_CLI,
-	NOM_CLI,
-	ID_DIR,
-	SEXO,
-	DUI
-FROM 
-	CLIENTES
+	
+SELECT * FROM VW_CLIENTES
 
 INSERT	INTO CLIENTES( ID_CLI, NOM_CLI, ID_DIR, SEXO, DUI )
 		VALUES	(01, 'ADRIANA CAROLINA HERNANDEZ MONTERROZA',	2, 'F', 78766543),
@@ -162,6 +163,7 @@ INSERT	INTO CLIENTES( ID_CLI, NOM_CLI, ID_DIR, SEXO, DUI )
 				(10, 'ANGELICA MARIA ROCHA GARCIA',				6, 'F', 76542185),
 				(11, 'ANGIE TATIANA FERNÁNDEZ MARTÍNEZ',		7, 'F', 76548125),
 				(12, 'GABRIEL MAURICIO NIETO BUSTOS',			4, 'M', 75499544)
+GO
 
 --OrdenPedido
 SELECT 
@@ -180,6 +182,7 @@ INSERT	INTO OrdenPedido(FECHA, ID_CLI, ID_EMP, ID_TipoPago, TOTAL)
                 ('03-2-2019', 3, 4,'44335457',$60.00),
                 ('04-2-2019', 4, 5,'44895645',$25.75),
                 ('05-2-2019', 5, 1,'44304674',$345.00)
+GO
 
 --Categoria 
 select 
@@ -195,6 +198,7 @@ insert	into Categoria (ID_CATE, NOM_DES)
                (24567,'PARA EL DOLOR DE CUERPO'),
                (99767,'PARA EL RESFRIO'),
                (23423,'PARA LA FIEBRE')
+GO
 
 --PROVEEDOR
 
@@ -206,7 +210,8 @@ INSERT	INTO PROVEEDOR (ID_PROV, NOM_PROV, ID_DIR, ID_DISTRITO)
                (123, 'DROGUERIA BF INTERNACIONAL',			16, 3),
                (824, 'DROGUERIA JERUSALEM',					17, 4),
                (127, 'DROGUERIA NOVA SALUD',				18, 5)
-			   
+GO
+
 --Presentacion
 select 
 	ID_PRE,
@@ -220,7 +225,7 @@ insert into Presentacion values(26,'HARRY VARGAS'),
                                (29,'ROBERT LAS CASAS'),
                                (30,'LUIS')
 
-
+GO
 --Producto
 
 SELECT * FROM VW_PRODUCTO
@@ -231,7 +236,8 @@ INSERT	INTO Producto( ID_PRO, NOM_PRO, ID_DP, ID_CATE, ID_PROV, ID_PRES)
                 (90358, 'palagrip',		3, '87653',  123,  28),
                 (90390,  'ibuprofeno',	4, '24567',  824,  29),
                 (90388,  'FORTE AS',	5,' 99767',  127,  30)
-				
+GO
+
 --DetalleProducto
 SELECT 
 	ID_DP,
@@ -248,6 +254,7 @@ INSERT	INTO DETALLE_PRODUCTO( ID_DP, PRE_VENTAS, PRE_COMPRAS, FECHA_VENC, STOCK)
 				(3, '1.00', '0.50', '', 20),
 				(4, '2.00', '1.00', '', 20),
 				(5, '4.00', '1.00', '', 20)
+GO
 
 --DetalleOrdenPedido
 select 
@@ -265,6 +272,7 @@ INSERT	INTO DetalleOrdenPedido (ID_PRO, CANTIDAD, PRECIO_VENTA, IMPORTE)
                (90358,	'19.3', '1.50', '0.18'),
                (90390, '15.3', '1.50', '0.12'),
                (90388,	'15.3', '2.50', '0.12')
+GO
 
 --Boleta
 select 
@@ -285,7 +293,7 @@ insert	into Boleta(FECHA, ID_EMPL, ID_CLI, NUM_OrdenPedido, SUBTOTAL, DESCUENTO,
                 (' ',  1,  1,  3, '345',  300,  10.290),
                 (' ',  1,  6,  4, '644',  340,  10.560),
                 (' ',  1,  3,  5, '746',  240,  30.200)
-
+GO
 
 --------------------------- CONSULTAS/PRUEBAS
 
@@ -297,3 +305,4 @@ select  ID_PRO from  DetalleOrdenPedido  WHERE PRECIO_VENTA like '2%'
 
 --CANTIDAD DE REGISTROS 
 SELECT COUNT(*) FROM USUARIO
+GO
